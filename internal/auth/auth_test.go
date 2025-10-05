@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fmt"
 	"net/http"
 	"testing"
 )
@@ -24,7 +23,6 @@ func TestGetAPIKey(t *testing.T) {
 	for _, tc := range tests {
 		got, err := GetAPIKey(tc.header)
 		if (err != nil) != tc.wantErr {
-			fmt.Sprintf("Got issue in test case %s", tc.name)
 			t.Fatalf("expected error: %v, got %v", tc.wantErr, err)
 		}
 		if got != tc.want {
