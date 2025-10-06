@@ -31,5 +31,8 @@ jobs:
         with:
           version: ">= 363.0.0"
 
-      - name: Push docker image to Google artifact
+      - name: Push docker image to Google Artifact
         run : gcloud builds submit --tag us-central1-docker.pkg.dev/imperial-glyph-474220-u1/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Google Run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/imperial-glyph-474220-u1/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project imperial-glyph-474220-u1 --max-instances=4
