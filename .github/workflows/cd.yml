@@ -20,3 +20,11 @@ jobs:
 
       - name: Build notely
         run: scripts/buildprod.sh
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+        with:
+          version: ">= 363.0.0"
+
+      - name: Push docker image to Google artifact
+        run : gcloud builds submit --tag us-central1-docker.pkg.dev/imperial-glyph-474220-u1/notely-ar-repo/notely:latest .
